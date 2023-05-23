@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">{{ loginTitle }}</h3>
       </div>
 
       <el-form-item prop="username">
@@ -54,9 +54,14 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'Login',
+  computed: {
+    ...mapGetters([
+      'sidebar'
+    ]),
+  },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -83,9 +88,11 @@ export default {
       },
       loading: false,
       passwordType: 'password',
-      redirect: undefined
+      redirect: undefined,
+      loginTitle:''
     }
   },
+  
   watch: {
     $route: {
       handler: function(route) {
@@ -121,6 +128,9 @@ export default {
         }
       })
     }
+  },
+  created(){
+    this.loginTitle = this.$store.state.settings.loginTitle
   }
 }
 </script>
@@ -180,7 +190,9 @@ $light_gray:#eee;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  background:url("../../assets/bg.jpg");
+  background-size: cover  ;
+  overflow: hidden;
   overflow: hidden;
 
   .login-form {
