@@ -6,7 +6,9 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    menu_auth_list:[],
+    btn_auth_list:['login']
   }
 }
 
@@ -24,6 +26,10 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  SET_AUTH_LIST:(state, menuList, btnList)=>{
+    state.menu_auth_list = menuList
+    state.btn_auth_list = btnList
   }
 }
 
@@ -35,6 +41,7 @@ const actions = {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
+        // commit('SET_AUTH_LIST', data.menu, data.btn)// 存储menu 和btn
         setToken(data.token)
         resolve()
       }).catch(error => {
