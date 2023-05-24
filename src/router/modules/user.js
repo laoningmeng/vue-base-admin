@@ -6,20 +6,14 @@ const userRouter = {
     name: 'User',
     meta: {
         title: '用户模块',
-        icon: 'table'
+        icon: 'table',
     },
     children: [
         {
             path: 'list',
             component: () => import('@/views/user/index'),
             name: 'Staff',
-            meta: { title: '人员模块',menu:'ojbk' }
-        },
-        {
-            path: 'list1',
-            component: () => import('@/views/user/index'),
-            name: 'Staff1',
-            meta: { title: '人员模块1' }
+            meta: { title: '人员模块',menu:'user' }
         },
   ]
 }
