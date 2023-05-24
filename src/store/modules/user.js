@@ -8,7 +8,7 @@ const getDefaultState = () => {
     name: '',
     avatar: '',
     menus:[],
-    btns:['login']
+    btns:[]
   }
 }
 
@@ -27,9 +27,11 @@ const mutations = {
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
   },
-  SET_AUTH_LIST:(state, menuList, btnList)=>{
-    state.menus = menuList
-    state.btns = btnList
+  SET_MENUS:(state, menus)=>{
+    state.menus = menus
+  },
+  SET_BTNS:(state, btns)=>{
+    state.btns = btns
   }
 }
 
@@ -63,7 +65,8 @@ const actions = {
 
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
-        // commit('SET_AUTH_LIST', data.menu, data.btn)// 存储menu 和btn
+        commit('SET_MENUS', data.menus)// 存储menu 和btn
+        commit('SET_BTNS', data.btns)// 存储menu 和btn
         resolve(data)
       }).catch(error => {
         reject(error)

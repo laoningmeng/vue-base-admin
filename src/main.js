@@ -38,12 +38,12 @@ Vue.config.productionTip = false
 
 Vue.directive('btn-auth', {
   inserted: function (el, binding, vnode) {
-    let btnArr = store.state.user.btn_auth_list 
-    let value = binding.value||{}
-    let name = value.name ||''
-    let hasPermission = btnArr.includes(name)
-    if (!hasPermission) {
-      el.parentNode.removeChild(el)
+    let btnArr = store.state.user.btns
+    if(binding.value && binding.value.name){
+      let hasPermission = btnArr.includes(binding.value.name)
+      if (!hasPermission) {
+        el.parentNode.removeChild(el)
+      }
     }
   }
 })
