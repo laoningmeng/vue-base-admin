@@ -7,8 +7,8 @@ const getDefaultState = () => {
     token: getToken(),
     name: '',
     avatar: '',
-    menu_auth_list:[],
-    btn_auth_list:['login']
+    menus:[],
+    btns:['login']
   }
 }
 
@@ -28,8 +28,8 @@ const mutations = {
     state.avatar = avatar
   },
   SET_AUTH_LIST:(state, menuList, btnList)=>{
-    state.menu_auth_list = menuList
-    state.btn_auth_list = btnList
+    state.menus = menuList
+    state.btns = btnList
   }
 }
 
@@ -41,7 +41,6 @@ const actions = {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
-        // commit('SET_AUTH_LIST', data.menu, data.btn)// 存储menu 和btn
         setToken(data.token)
         resolve()
       }).catch(error => {
@@ -64,6 +63,7 @@ const actions = {
 
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
+        // commit('SET_AUTH_LIST', data.menu, data.btn)// 存储menu 和btn
         resolve(data)
       }).catch(error => {
         reject(error)

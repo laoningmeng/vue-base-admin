@@ -36,7 +36,7 @@ Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false
 
 
-Vue.directive('auth', {
+Vue.directive('btn-auth', {
   inserted: function (el, binding, vnode) {
     let btnArr = store.state.user.btn_auth_list 
     let value = binding.value||{}
