@@ -6,9 +6,8 @@ import { asyncRoutes, constantRoutes } from '@/router'
  * @param route
  */
 function hasPermission(menus, route) {
-  let routeMenuTag = route.meta.menu||''
-  if (route.meta && routeMenuTag) {
-    return menus.some(role => menus.includes(routeMenuTag))
+  if (route.meta && route.meta.menu) {
+    return menus.some(menu => menus.includes(menu))
   } else {
     return true
   }
@@ -21,7 +20,6 @@ function hasPermission(menus, route) {
  */
 export function filterAsyncRoutes(routes, menus) {
   const res = []
-
   routes.forEach(route => {
     const tmp = { ...route }
     if (hasPermission(menus, tmp)) {
@@ -50,11 +48,12 @@ const mutations = {
 const actions = {
   generateRoutes({ commit }, menus) {
     return new Promise(resolve => {
-        console.log("gene munus:", menus)
         let accessedRoutes
         accessedRoutes = filterAsyncRoutes(asyncRoutes, menus)
         commit('SET_ROUTES', accessedRoutes)
         resolve(accessedRoutes)
+    }).catch(err=>{
+        console.log("err:", err)
     })
   }
 }

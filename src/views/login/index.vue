@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
-      <div class="title-container">
+      <div class="title-container" >
         <h3 class="title">{{ loginTitle }}</h3>
       </div>
 

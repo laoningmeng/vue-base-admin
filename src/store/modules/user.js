@@ -61,12 +61,12 @@ const actions = {
           return reject('Verification failed, please Login again.')
         }
 
-        const { name, avatar } = data
-
+        const { name, avatar ,menus,btns} = data
+        
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
-        commit('SET_MENUS', data.menus)// 存储menu 和btn
-        commit('SET_BTNS', data.btns)// 存储menu 和btn
+        commit('SET_MENUS', menus)// 存储menu 和btn
+        commit('SET_BTNS', btns)// 存储menu 和btn
         resolve(data)
       }).catch(error => {
         reject(error)
