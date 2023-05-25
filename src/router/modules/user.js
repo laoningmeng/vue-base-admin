@@ -16,6 +16,12 @@ const userRouter = {
             meta: { title: '人员管理',menu:'user', icon:'peoples' }
         },
         {
+            path: 'role',
+            component: () => import('@/views/role/index'),
+            name: 'Staff',
+            meta: { title: '角色管理',menu:'role', icon:'theme' }
+        },
+        {
             path: 'department',
             component: () => import('@/views/department/index'),
             name: 'Staff',
