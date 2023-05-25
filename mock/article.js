@@ -8,7 +8,7 @@ const image_uri = 'https://wpimg.wallstcn.com/e4558086-631c-425c-9430-56ffb46e70
 
 for (let i = 0; i < count; i++) {
   List.push(Mock.mock({
-    'status|1': ['published', 'draft'],
+    'status|1': ["在职", "离职","离职中","预入职"],
     id: '@increment',
     name:'章三',
     create_time: +Mock.Random.date('T'),
